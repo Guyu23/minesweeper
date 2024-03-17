@@ -1,56 +1,97 @@
-<script setup lang="ts">
-defineOptions({
-  name: 'IndexPage',
-})
-const user = useUserStore()
-const name = ref(user.savedName)
+<script lang="ts"
+    setup>
+    import { reactive, onMounted } from 'vue'
 
-const router = useRouter()
-function go() {
-  if (name.value)
-    router.push(`/hi/${encodeURIComponent(name.value)}`)
-}
+    interface BlockState {
+        x: number
+        y: number
+        revealed?: boolean
+        mine?: boolean
+        flagged?: boolean
+        adjacentMines?: number
+    }
 
-const { t } = useI18n()
+    const WIDTH = 10
+    const HEIGHT = 10
+    const state = reactive(Array.from({ length: HEIGHT }, (_, y) =>
+        Array.from({ length: WIDTH },
+            (_, x): BlockState => ({ x, y })
+        )))
+
+    const directions = [
+        [-1, -1],
+        [-1, 0],
+        [-1, 1],
+        [0, -1],
+        [0, 1],
+        [1, -1],
+        [1, 0],
+        [1, 1]
+    ]
+
+    function updateNumbers() {
+        state.forEach((row, y) => {
+            row.forEach((block, x) => {
+                if (block.mine) return
+                directions.forEach(([dx, dy]) => {
+                    const newX = x + dx
+                    const newY = y + dy
+                    if (newX < 0 || newX >= WIDTH || newY < 0 || newY >= HEIGHT) return
+                    if (state[newY][newX].mine) {
+                        block.adjacentMines = (block.adjacentMines || 0) + 1
+                    }
+                })
+            })
+        })
+    }
+
+
+    function onClick(x: number, y: number) {
+        console.log(x, y)
+    }
+
+
+    function generateMines() {
+        for (const row of state) {
+            for (const block of row) {
+                block.mine = Math.random() < 0.3
+            }
+        }
+    }
+
+    function getBlockClass(block: BlockState) {
+        return block.mine ? 'text-red' : 'text-gray'
+    }
+
+    onMounted(() => {
+        generateMines()
+    })
 </script>
 
 <template>
-  <div>
-    <div text-4xl>
-      <div i-carbon-campsite inline-block />
-    </div>
-    <p>
-      <a rel="noreferrer" href="https://github.com/antfu/vitesse" target="_blank">
-        Vitesse
-      </a>
-    </p>
-    <p>
-      <em text-sm opacity-75>{{ t('intro.desc') }}</em>
-    </p>
-
-    <div py-4 />
-
-    <TheInput
-      v-model="name"
-      :placeholder="t('intro.whats-your-name')"
-      autocomplete="false"
-      @keydown.enter="go"
-    />
-    <label class="hidden" for="input">{{ t('intro.whats-your-name') }}</label>
-
     <div>
-      <button
-        m-3 text-sm btn
-        :disabled="!name"
-        @click="go"
-      >
-        {{ t('button.go') }}
-      </button>
+        Minesweeper
+        <div v-for="(row, index) in state"
+            :key="index" flex='~' items-center justify-center>
+            <button v-for="(item, index) in row"
+                w-8
+                h-8
+                border
+                flex='~'
+                items-center
+                justify-center
+                hover:bg-gray
+                :class='getBlockClass(item)'
+                :key="index">
+                <div v-if='item.mine'
+                    i-fxemoji-bomb>
+                    
+                </div>
+                <div v-else>
+                    {{ item.adjacentMines || '-' }}
+                </div>
+            </button>
+        </div>
     </div>
-  </div>
 </template>
-
-<route lang="yaml">
-meta:
-  layout: home
-</route>
+<style scoped></style>

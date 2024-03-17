@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@iconify-json/fxemoji':
+    specifier: ^1.1.8
+    version: 1.1.8
   '@unhead/vue':
     specifier: ^1.8.10
     version: 1.8.10(vue@3.4.21)
@@ -1850,9 +1853,14 @@ packages:
       '@iconify/types': 2.0.0
     dev: true
 
+  /@iconify-json/fxemoji@1.1.8:
+    resolution: {integrity: sha512-Gv7/QmnvXyRZEDfTsKeoOzFarh+Jf0EZtag0AZy2RclupBoAQTP5vKBGtCrGW0cBALE1ok53P9FEkPb7xy3SCw==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
+
   /@iconify/types@2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
-    dev: true
 
   /@iconify/utils@2.1.22:
     resolution: {integrity: sha512-6UHVzTVXmvO8uS6xFF+L/QTSpTzA/JZxtgU+KYGFyDYMEObZ1bu/b5l+zNJjHy+0leWjHI+C0pXlzGvv3oXZMA==}
@@ -10571,6 +10579,7 @@ packages:
 
   /workbox-google-analytics@7.0.0:
     resolution: {integrity: sha512-MEYM1JTn/qiC3DbpvP2BVhyIH+dV/5BjHk756u9VbwuAhu0QHyKscTnisQuz21lfRpOwiS9z4XdqeVAKol0bzg==}
+    deprecated: It is not compatible with newer versions of GA starting with v4, as long as you are using GAv3 it should be ok, but the package is not longer being maintained
     dependencies:
       workbox-background-sync: 7.0.0
       workbox-core: 7.0.0

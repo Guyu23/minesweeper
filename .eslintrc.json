@@ -1,0 +1,8 @@
+{
+  "extends": [
+    "@unocss"
+  ],
+  "rules": {
+    "@unocss/order-attributify": true
+  }
+}

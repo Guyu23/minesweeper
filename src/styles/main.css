@@ -27,3 +27,8 @@ html.dark {
   width: 100%;
   height: 2px;
 }
+
+@font-face {
+    font-family: 'funFont';
+    src: url('../../public/Wonder\ Boys.ttf') format('truetype');
+}

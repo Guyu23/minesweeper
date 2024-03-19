@@ -8,6 +8,12 @@ dependencies:
   '@iconify-json/fxemoji':
     specifier: ^1.1.8
     version: 1.1.8
+  '@iconify-json/noto-v1':
+    specifier: ^1.1.11
+    version: 1.1.11
+  '@iconify-json/streamline':
+    specifier: ^1.1.8
+    version: 1.1.8
   '@unhead/vue':
     specifier: ^1.8.20
     version: 1.8.20(vue@3.4.21)
@@ -20,9 +26,6 @@ dependencies:
   '@vueuse/head':
     specifier: ^2.0.0
     version: 2.0.0(vue@3.4.21)
-  animejs:
-    specifier: ^3.2.2
-    version: 3.2.2
   canvas-confetti:
     specifier: ^1.9.2
     version: 1.9.2
@@ -1936,6 +1939,18 @@ packages:
 
   /@iconify-json/fxemoji@1.1.8:
     resolution: {integrity: sha512-Gv7/QmnvXyRZEDfTsKeoOzFarh+Jf0EZtag0AZy2RclupBoAQTP5vKBGtCrGW0cBALE1ok53P9FEkPb7xy3SCw==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
+
+  /@iconify-json/noto-v1@1.1.11:
+    resolution: {integrity: sha512-yIbY18d1sQxKW5jitmnqmIC8611olDLQzIQBGXEpkHGqxExa6mi4zaAmYw9e44Jb8HUqgE1YtP7HeKlW95n3rA==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
+
+  /@iconify-json/streamline@1.1.8:
+    resolution: {integrity: sha512-9G9y1BYgh3VTZdE8CPUVSfzjHL39/PkkdPpyVCeWYZ64flyPEEBMeRz4YyoOU8A8MMTUj2zCq9GcsLpZb9Yg1Q==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: false
@@ -3877,10 +3892,6 @@ packages:
       require-from-string: 2.0.2
       uri-js: 4.4.1
     dev: true
-
-  /animejs@3.2.2:
-    resolution: {integrity: sha512-Ao95qWLpDPXXM+WrmwcKbl6uNlC5tjnowlaRYtuVDHHoygjtIPfDUoK9NthrlZsQSKjZXlmji2TrBUAVbiH0LQ==}
-    dev: false
 
   /ansi-colors@4.1.3:
     resolution: {integrity: sha512-/6w/C21Pm1A7aZitlI5Ni/2J6FFQN8i1Cvz3kHABAAbw93v/NlvKdVOqz7CCWz/3iv/JplRSEEZ83XION15ovw==}

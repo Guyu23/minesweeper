@@ -21,6 +21,7 @@
   // Silent the stylistic rules in you IDE, but still auto fix them
   "eslint.rules.customizations": [
     { "rule": "no-console", "severity": "off"},
+    { "rule": "vue/first-attribute-linebreak", "severity": "off"},
     { "rule": "style/*", "severity": "off" },
     { "rule": "format/*", "severity": "off" },
     { "rule": "*-indent", "severity": "off" },
@@ -30,6 +31,7 @@
     { "rule": "*-dangle", "severity": "off" },
     { "rule": "*-newline", "severity": "off" },
     { "rule": "*quotes", "severity": "off" },
+    { "rule": "unocss/order-attributify", "severity": "off" },
     { "rule": "*semi", "severity": "off" }
   ],
 

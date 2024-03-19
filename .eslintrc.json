@@ -3,6 +3,8 @@
     "@unocss"
   ],
   "rules": {
-    "@unocss/order-attributify": true
+    "@unocss/order-attributify": true,
+    "no-console": "off",
+    "eslint-plugin-vue/no-console": "off"
   }
 }

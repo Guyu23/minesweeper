@@ -6,30 +6,32 @@ export const useMinesweeperStore = defineStore('gameStatus', () => {
 
     const gameStatus = ref<GameStatus>('playing')
     const mineGenerated = ref(false)
+    const clickBlock = ref<BlockState>()
 
     function setGameStatus(status: GameStatus) {
-        gameStatus.value = status
+      gameStatus.value = status
     }
 
     function changeMineGenerated(status: boolean) {
-        mineGenerated.value = status
+      mineGenerated.value = status
     }
 
     return {
-        gameStatus,
-        mineGenerated,
-        setGameStatus,
-        changeMineGenerated
+      gameStatus,
+      mineGenerated,
+      clickBlock,
+      setGameStatus,
+      changeMineGenerated,
     }
 })
 
 export interface BlockState {
-    x: number
-    y: number
-    id: string
-    revealed: boolean
-    mine?: boolean
-    flagged?: boolean
-    adjacentMines: number
-    delay?: number
+  x: number
+  y: number
+  id: string
+  revealed: boolean
+  mine?: boolean
+  flagged?: boolean
+  adjacentMines: number
+  delay: number
 }

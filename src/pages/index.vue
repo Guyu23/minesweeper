@@ -2,7 +2,7 @@
         setup>
         import { ref } from 'vue'
         import { storeToRefs } from 'pinia'
-        import { useElementSize } from '@vueuse/core'
+        import Hamster from '~/components/Hamster.vue'
         import { getRandomId } from '../composables/utils'
         import WinOrLose from '~/components/WinOrLose.vue'
         import MineBlock from '~/components/MineBlock.vue'
@@ -140,6 +140,7 @@
       <WinOrLose v-if="gameStatus !== 'playing'"
                  :win="gameStatus === 'won'" />
     </div>
+    <Hamster />
   </div>
 </template>
 

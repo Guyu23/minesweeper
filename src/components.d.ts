@@ -7,6 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    Hamster: typeof import('./components/Hamster.vue')['default']
     MineBlock: typeof import('./components/MineBlock.vue')['default']
     MineFunctions: typeof import('./components/MineFunctions.vue')['default']
     README: typeof import('./components/README.md')['default']

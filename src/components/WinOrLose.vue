@@ -44,17 +44,9 @@
                 shapes: ['circle'],
             })
         }
-
-        const props = defineProps(['win', 'height', 'width'])
-        const style = {
-            top: `${props.height / 4}px`,
-            left: `${props.width / 2 - props.height / 4}px`,
-            width: `${props.height / 2}px`,
-            height: `${props.height / 2}px`,
-            'backdrop-filter': 'blur(2px)'
-        }
-
+        const modal = ref(null)
         const modalClass = ref('modal')
+        const props = defineProps(['win'])
 
         function hideModal() {
             modalClass.value = 'modal modal-hide'
@@ -68,6 +60,7 @@
 
 <template>
     <div :class="modalClass"
+         ref="modal"
          bg-slate-200:20
          absolute
          backdrop-blur
@@ -75,7 +68,6 @@
          flex-col
          items-center
          justify-center
-         :style
          @click='hideModal'>
         <div v-if='!win'
              class='lose'
@@ -88,14 +80,19 @@
         <div font-fun
              font-bold
              text-2xl
-             my4
+             mt4
              :class='win ? "text-green" : "text-red"'>{{ win ? `Congratulations!` : 'OOPS! You Lose~~~' }}</div>
     </div>
 </template>
 
 <style scoped>
 .modal {
-    border-radius: 12px;
+    backdrop-filter: blur(2px);
+    width: 15rem;
+    height: 15rem;
+    top: calc(50% - 7.5rem);
+    left: calc(50% - 7.5rem);
+    border-radius: 6px;
     animation: showModal 0.5s ease-in-out forwards;
 }
 

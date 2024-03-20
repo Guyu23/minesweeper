@@ -212,7 +212,7 @@
     background: linear-gradient(-45deg,
             rgba(228, 63, 17, 0.5) 70%,
             rgba(253, 223, 0, 0.5));
-    filter: blur(10px);
+    filter: blur(6px);
 }
 
 .bombBg {

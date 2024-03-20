@@ -17,8 +17,6 @@
         const { gameStatus } = storeToRefs(mineSweeperStore)
         const map = ref(null)
 
-        const { width, height } = useElementSize(map)
-
         const state = ref<BlockState[][]>(
           Array.from({ length: HEIGHT }, (_, y) =>
             Array.from(
@@ -140,9 +138,7 @@
                    @check-game-status="checkGameStates" />
       </div>
       <WinOrLose v-if="gameStatus !== 'playing'"
-                 :win="gameStatus === 'won'"
-                 :width
-                 :height />
+                 :win="gameStatus === 'won'" />
     </div>
   </div>
 </template>

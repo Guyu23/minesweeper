@@ -5,7 +5,7 @@
         defineEmits(['resetGame'])
         const buttons = reactive([
             { text: 'Easy', rows: 8, cols: 8, possibility: 0.2 },
-            { text: 'Medium', rows: 10, cols: 10, possibility: 0.3 },
+            { text: 'Normal', rows: 10, cols: 10, possibility: 0.3 },
             { text: 'Hard', rows: 12, cols: 12, possibility: 0.4 },
         ])
 </script>

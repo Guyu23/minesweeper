@@ -10,6 +10,28 @@ const { t } = useI18n()
 //   await loadLanguageAsync(newLocale)
 //   locale.value = newLocale
 // }
+
+function changeBtn(func: () => void, $eve: MouseEvent): void {
+  const x = $eve.clientX
+  const y = $eve.clientY
+  // 计算鼠标点击位置距离视窗的最大圆半径
+  const endRadius = Math.hypot(
+    Math.max(x, innerWidth - x),
+    Math.max(y, innerHeight - y),
+  )
+  document.documentElement.style.setProperty('--x',`${x}px`)
+  document.documentElement.style.setProperty('--y', `${y}px`)
+  document.documentElement.style.setProperty('--r', `${endRadius}px`)
+  // 判断浏览器是否支持document.startViewTransition
+  if ((document as any).startViewTransition) {
+    (document as any).startViewTransition(() => {
+      func();
+    });
+  } else {
+    func();
+  }
+}
+
 </script>
 
 <template>
@@ -18,7 +40,7 @@ const { t } = useI18n()
       <div i-carbon-campsite />
     </RouterLink> -->
 
-    <button icon-btn :title="t('button.toggle_dark')" @click="toggleDark()">
+    <button icon-btn :title="t('button.toggle_dark')" @click="changeBtn(toggleDark, $event)">
       <div i="carbon-sun dark:carbon-moon" />
     </button>
 
